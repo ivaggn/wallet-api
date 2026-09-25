@@ -30,6 +30,7 @@ def get_account(account_id: int, db: Session = Depends(get_db)):
     if account is None:
         raise HTTPException(status_code=404, detail="Account not found")
     return account 
+
 @app.post("/accounts/{account_id}/deposit", response_model=AccountOut)
 def deposit_endpoint(account_id: int, data: AmountIn, db: Session = Depends(get_db)):
     return deposit(db, account_id, data.amount_cents)
