@@ -93,6 +93,7 @@ def test_transfer_insufficient_funds_leaves_balances_unchanged():
     assert transfer_response.status_code == 400
 
     check_response = client.get(f"/accounts/{account_id1}")
+    
     assert check_response.json()["balance_cents"] == 0
 
 client = TestClient(app)
